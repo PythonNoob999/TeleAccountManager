@@ -13,7 +13,7 @@ chats=@chat1|@chat2|@chat3
 > How much accounts to use, max by default
 
 2. max_perf
-> Read [[Startup]]
+> Read [Startup](https://github.com/PythonNoob999/TeleAccountManager/blob/647d3d354aab418d075614912f1ca9ceb0a31fde/docs/Startup.md)
 
 3. chats
 > That chats that you want to leave, if you have more than 1 chat, separate them by |
