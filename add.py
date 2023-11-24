@@ -1,4 +1,3 @@
-from Tools.info import db
 from Tools.dialogs import create_account
 import asyncio
 
