@@ -5,7 +5,7 @@
 #### TeleAccountManager is a telegram tool built with [pyrogram](https://docs.pyrogram.org) To control multiple TelegramAccounts using 1 easy and fast command
 
 ### WARNING⚠️
-#### ** TeleAccountManager is TOTALLY not responsible for any account that got banned due to telegram safety algorithms **
+#### * TeleAccountManager is TOTALLY not responsible for any account that got banned due to telegram safety algorithms *
 
 ### SETUP
 1. `git clone https://github.com/PythonNoob999/TeleAccountManager.git`
