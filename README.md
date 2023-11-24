@@ -1,3 +1,4 @@
+# TeleAccountManager
 
 ![Static Badge](https://img.shields.io/badge/TeleAccountManager-V2-blue?logo=python&logoColor=blue) ![Static Badge](https://img.shields.io/badge/MTProto-pyrogram-orange?logo=telegram&logoColor=blue) 
 
