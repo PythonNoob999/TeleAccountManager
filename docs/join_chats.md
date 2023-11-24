@@ -11,10 +11,10 @@ chats=@chat1|@chat2|@chat3
 1. count
 > How much accounts to use, max by default
 
-1. max_perf
+2. max_perf
 > Read [[Startup]]
 
-1. chats
+3. chats
 > That chats that you want to join, if you have more than 1 chat, separate them by |
 >Example:
 >if you have links like this
