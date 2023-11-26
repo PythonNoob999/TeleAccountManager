@@ -190,6 +190,7 @@ def click_dialog(command, console):
     console.print("[bold yellow]Do you want to enable force_find option?\n[bold green]force_find let the account check every last message from the bot,until it finds a keyboard, and click it")
      
     force_find = console.input("[bold green][Y/N] ")
+    force_find = True if force_find.lower()=="Y" else False
      
     console.print("[bold yellow]Type a button name to find, instead of using index, type a button name to search for or empty string for default settings")
      
