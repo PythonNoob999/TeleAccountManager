@@ -8,7 +8,6 @@ class Ref:
         phone_number: str,
         session_string: str,
         ref_link: str,
-        hold: int = 0
     ):
         data = process_ref_link(ref_link)
 
@@ -18,7 +17,6 @@ class Ref:
 
         try:
             await app.send_message(data["user"], data["msg"])
-            await asyncio.sleep(hold)
             await app.disconnect()
             return 1
         except Exception as e:

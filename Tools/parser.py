@@ -12,6 +12,7 @@ KWARGS_TYPES = {
     "first_name": str,
     "last_name": str,
     "emoji": str,
+    "chocies": str,
     "hold": int,
     "index": int,
     "force_find": stb,
@@ -53,7 +54,8 @@ def parse_kwargs(text: str,command: str) -> dict:
     # default Params
     kwgs = {
         "count": "max",
-        "max_perf": False
+        "max_perf": False,
+        "hold": 0
     }
 
     for kwg in kwargs:
@@ -62,6 +64,9 @@ def parse_kwargs(text: str,command: str) -> dict:
             kwgs["message"] += f"\n{kwg}"
         elif "chats=" in kwg:
             kwgs["chats"] = process_links(kwg.split("=")[1].strip())
+        elif "choices=" in kwg:
+            choices = int(kwg.replace("choices=", "").strip())-1 if "-" not in kwg else [int(x)-1 for x in kwg.replace("choices=","").split("-")]
+            kwgs["choices"] = choices
         else:
             kwgs[kwg.split("=",1)[0].strip()] = KWARGS_TYPES[kwg.split("=",1)[0].strip()](kwg.split("=",1)[1].strip())
     return kwgs

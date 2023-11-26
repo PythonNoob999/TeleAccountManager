@@ -7,7 +7,6 @@ class LeaveChats:
         phone_number: str,
         session_string: str,
         chats: list,
-        hold: int = 0
     ):
 
         app = Client(phone_number, session_string=session_string)
@@ -17,7 +16,6 @@ class LeaveChats:
         try:
             for chat in chats:
                 await app.leave_chat(chat)
-                await asyncio.sleep(hold)
             await app.disconnect()
             return 1
         except Exception as e:

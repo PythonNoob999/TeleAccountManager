@@ -6,6 +6,8 @@ from .click import Click
 from .send_contact import SendContact
 from .add_contact import AddContact
 from .send_reaction import SendReaction
+from .send_vote import SendVote
+from .unsend_vote import UnsendVote
 
 class Methods(
 SendMessage,
@@ -15,6 +17,8 @@ Ref,
 Click,
 SendContact,
 AddContact,
-SendReaction
+SendReaction,
+SendVote,
+UnsendVote
 ):
     pass

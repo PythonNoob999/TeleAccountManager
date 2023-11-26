@@ -12,7 +12,6 @@ class Click:
         session_string: str,
         username: str,
         index: int,
-        hold: int = 0,
         searchfor = None,
         force_find = False,
     ):
@@ -30,11 +29,9 @@ class Click:
                 keyboard = Click.get_keyboard(lm.reply_markup)
                 index = Click.search(keyboard, searchfor)
             await lm.click(index, timeout=1)
-            await asyncio.sleep(hold)
             await app.disconnect()
             return 1
         except TimeoutError:
-            await asyncio.sleep(hold)
             await app.disconnect()
             return 1
         except Exception as e:

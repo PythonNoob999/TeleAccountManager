@@ -9,7 +9,6 @@ class SendMessage:
         session_string: str,
         username: str,
         message: str,
-        hold: int = 0
     ):
 
         app = Client(phone_number, session_string=session_string)
@@ -17,7 +16,6 @@ class SendMessage:
         await app.connect()
 
         try:
-            await asyncio.sleep(hold)
             await app.send_message(lnk(username), message)
             await app.disconnect()
             return 1
