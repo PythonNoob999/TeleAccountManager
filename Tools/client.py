@@ -15,7 +15,10 @@ methods = {
     "add_contact": Methods.add_contact,
     "send_reaction": Methods.send_reaction,
     "send_vote": Methods.send_vote,
-    "unsend_vote": Methods.unsend_vote
+    "unsend_vote": Methods.unsend_vote,
+    "export_chats": Methods.export_chats,
+    "captcha": Methods.captcha,
+    "watch": Methods.watch
 }
 
 async def Execute(method,kwargs):

@@ -8,6 +8,9 @@ from .add_contact import AddContact
 from .send_reaction import SendReaction
 from .send_vote import SendVote
 from .unsend_vote import UnsendVote
+from .export_chats import ExportChats
+from .captcha import Captcha
+from .watch import Watch
 
 class Methods(
 SendMessage,
@@ -19,6 +22,9 @@ SendContact,
 AddContact,
 SendReaction,
 SendVote,
-UnsendVote
+UnsendVote,
+ExportChats,
+Captcha,
+Watch
 ):
     pass

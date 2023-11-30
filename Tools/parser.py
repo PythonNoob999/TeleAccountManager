@@ -13,10 +13,12 @@ KWARGS_TYPES = {
     "last_name": str,
     "emoji": str,
     "chocies": str,
+    "type": str,
     "hold": int,
     "index": int,
     "force_find": stb,
-    "max_perf": stb
+    "max_perf": stb,
+    "button": stb
 }
 
 

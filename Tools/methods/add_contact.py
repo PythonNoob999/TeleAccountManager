@@ -7,8 +7,8 @@ class AddContact:
         phone_number: str,
         session_string: str,
         username: str,
-        contact_number: str,
         first_name: str,
+        contact_number = None,
         last_name = None
     ):
 
@@ -17,7 +17,18 @@ class AddContact:
         await app.connect()
 
         try:
-            await app.add_contact(user_id=username,phone_number=contact_number,first_name=first_name,last_name=last_name)
+            if contact_number is not None:
+                await app.add_contact(
+                    user_id=username,
+                    phone_number=contact_number,
+                    first_name=first_name,
+                    last_name=last_name
+                )
+            else:
+                await app.add_contact(
+                    user_id=username,
+                    first_name=first_name
+                )
             await app.disconnect()
             return 1
         except Exception as e:
