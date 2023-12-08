@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from Tools.client import Execute, Run
 from Tools.parser import parse_kwargs
-from Tools.info import logger
+from Tools.info import logger, db
+from Tools.methods.refresh import Refresh
 from time import perf_counter as pc
 
 client = Client(
@@ -46,5 +47,35 @@ async def main_handler(bot, m):
 
 
         return await m.reply('Please reply to a message that has a script')
+
+    elif command == "delete":
+        try:
+            account = txt[1]
+            if db.check_exist(account):
+                ss = db.get_account_info(account)["session_string"]
+                db.delete_account(account)
+                app = Client(account, session_string=ss)
+                try:
+                    await app.connect()
+                    await app.log_out()
+                except:
+                    pass
+                return await m.reply(f"Deleted {account}✅")
+            return await m.reply("This phone number is not in the DB")
+        except:
+            return await m.reply("Please but a phone number to delete")
+
+    elif command == "refresh":
+        await m.reply("Refreshing📟")
+        inf = await Refresh.refresh()
+        text = f'''
+        Scan complete!
+        Results:
+          total accounts: {inf["total"]}
+          banned: {inf["banned"]}
+          revoked: {inf["revoked"]}
+          remaining accounts: {inf["remain"]}
+        '''
+        return await m.reply(text)
 
 client.run()

@@ -1,12 +1,13 @@
 from pyrogram import Client
 from ..info import logger
+from typing import Union
 import asyncio
 
 class SendContact:
     async def send_contact(
         phone_number: str,
         session_string: str,
-        username: str,
+        username: Union[str,int],
         contact_number: str,
         first_name: str,
         last_name = None

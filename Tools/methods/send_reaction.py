@@ -2,6 +2,12 @@ from pyrogram import Client
 from ..info import logger
 from ..parser import process_post_link
 import asyncio
+import random
+
+reactions = {
+    "positive": ["👍", "❤️", "🔥", "🌚", "👏","🎉"],
+    "negative": ["🤡", "💩", "🤮", "😡", "🖕"]
+}
 
 class SendReaction:
     async def send_reaction(
@@ -13,6 +19,9 @@ class SendReaction:
         link = process_post_link(link)
         app = Client(phone_number, session_string=session_string)
 
+        if emoji in ["positive", "negative"]:
+            emoji = random.choice(reactions[emoji])
+
         await app.connect()
 
         try:
@@ -21,5 +30,6 @@ class SendReaction:
             return 1
         except Exception as e:
             logger.exception(e)
+            print(emoji)
             await app.disconnect()
             return 0

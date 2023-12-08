@@ -1,13 +1,18 @@
 from pyrogram import Client
+from pyrogram.types import (
+InlineKeyboardMarkup as IKM
+)
 from ..info import logger
+from typing import Union
 import re
 
 class Captcha:
     async def captcha(
         phone_number: str,
         session_string: str,
-        username: str,
+        username: Union[str,int],
         force_find: bool = False,
+        button: bool = False,
         type: str = "math"
     ):
         app = Client(phone_number, session_string=session_string)
@@ -23,8 +28,10 @@ class Captcha:
             if type == "math":
                 captcha = Captcha.get_math_captcha(message.text)
                 solve = eval(captcha)
-
-            await app.send_message(username, str(solve))
+            if button and isinstance(message.reply_markup, IKM):
+                await Captcha.choose(message, str(solve))
+            else:
+                await app.send_message(username, str(solve))
             await app.disconnect()
 
             return 1
@@ -35,10 +42,22 @@ class Captcha:
             logger.exception(e)
             return 0
 
-    def get_math_captcha(text):
-        pattern = r"\b\d+\s*[-+*/]\s*\d+\b"
+    async def choose(msg, solve):
+        n = 0
+        for row in msg.reply_markup.inline_keyboard:
+            for btn in row:
+                if btn.text == solve:
+                    try:
+                        await msg.click(n, timeout=1)
+                    except:
+                        pass
+                    return
+            n +=1
 
-        equations = re.findall(pattern,text)
+    def get_math_captcha(text):
+        pattern = re.compile(r'\b\d+\s*[-+*/]\s*\d+\b', re.UNICODE | re.IGNORECASE)
+
+        equations = pattern.findall(text)
 
         if equations == []:
             return False

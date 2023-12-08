@@ -1,16 +1,16 @@
 from pyrogram import Client
 from ..info import logger
 from ..parser import lnk
+from typing import Union
 import asyncio
 
 class SendMessage:
     async def send_message(
         phone_number: str,
         session_string: str,
-        username: str,
+        username: Union[str,int],
         message: str,
     ):
-
         app = Client(phone_number, session_string=session_string)
 
         await app.connect()

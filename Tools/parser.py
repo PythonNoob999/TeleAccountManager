@@ -1,10 +1,17 @@
-stb = (lambda x: True if x == "True" else False)
+def isfloat(string):
+    try:
+        float(string)
+        return True
+    except:
+        return False
+
+stb = (lambda x: True if x.lower() == "true" else False)
+soi = (lambda x: x if not isfloat(x) else int(x))
 
 KWARGS_TYPES = {
     "count": str,
     "link": str,
     "message": str,
-    "username": str,
     "chats": str,
     "ref_link": str,
     "searchfor": str,
@@ -16,13 +23,20 @@ KWARGS_TYPES = {
     "type": str,
     "hold": int,
     "index": int,
+    "username": soi,
     "force_find": stb,
     "max_perf": stb,
-    "button": stb
+    "button": stb,
+    "mute": stb,
+    "archive": stb
 }
 
 
-lnk = (lambda x: x.replace("https://t.me/","").replace("http://t.me/","").replace("https://telegram.me/","").replace("http://telegram.me/","").replace("@",""))
+def lnk(x):
+    try:
+        return x.replace("https://t.me/","").replace("http://t.me/","").replace("https://telegram.me/","").replace("http://telegram.me/","").replace("@","")
+    except:
+        return x
 
 def process_ref_link(link):
     link = lnk(link).split("?")
@@ -70,6 +84,8 @@ def parse_kwargs(text: str,command: str) -> dict:
             choices = int(kwg.replace("choices=", "").strip())-1 if "-" not in kwg else [int(x)-1 for x in kwg.replace("choices=","").split("-")]
             kwgs["choices"] = choices
         else:
-            kwgs[kwg.split("=",1)[0].strip()] = KWARGS_TYPES[kwg.split("=",1)[0].strip()](kwg.split("=",1)[1].strip())
+            kwarg = kwg.split("=",1)[0].strip()
+            value = kwg.split("=",1)[1].strip()
+            kwgs[kwarg]= KWARGS_TYPES[kwarg](value)
     return kwgs
 

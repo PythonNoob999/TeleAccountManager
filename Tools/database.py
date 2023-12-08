@@ -47,3 +47,9 @@ class DB:
         for account in accounts:
             accs[account[0]] = account[1]
         return accs
+
+    def get_account_info(self,phone_number):
+        self.c.execute("SELECT session_string FROM accounts WHERE phone_number=(?)", [phone_number])
+        data = self.c.fetchall()[0]
+
+        return {"session_string": data[0]}

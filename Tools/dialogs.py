@@ -108,15 +108,15 @@ def send_message_dialog(console):
     console.print("[bold yellow]Please, type the message that you want to send to the user/bot")
 
     message = console.input("[bold green]>> ")
-    
+
     console.print("[bold yellow]Type the wait time for each account, in seconds\n[bold red]0 by default")
-    
+
     hold = console.input("[bold green]>> ")
-    
+
     while not hold.isdigit() and hold != "":
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         hold = console.input("[bold green]>> ")
-    
+
     hold = 0 if hold=="" else int(hold)
 
     console.print("[bold yellow]do you want to run at maximum speed? AKA max_perf=True?\n[Y/N]")
@@ -136,9 +136,9 @@ def send_message_dialog(console):
 
 def chats_dialog(command, console):
     console.print("[bold yellow]Please type each chat link separated with |\n[bold yellow]Example:\n[bold green]@chat1|https://t.me/chat2|https://t.me/+chat3")
-    
+
     chats = process_links(console.input("[bold green]>> "))
-    
+
     console.print("[bold yellow]Type the number of accounts\n[bold red]max by default")
 
     count = console.input("[bold green]>> ")
@@ -147,57 +147,57 @@ def chats_dialog(command, console):
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         count = console.input("[bold green]>> ")
     count = "max" if count == "" else int(count)
-    
+
     console.print("[bold yellow]Type the wait time between each account, in seconds\n[bold red]0 by default")
-    
+
     hold = console.input("[bold green]>> ")
-    
+
     while not hold.isdigit() and hold != "":
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         hold = console.input("[bold green]>> ")
-    
+
     hold = 0 if hold == "" else int(hold)
-    
+
     console.print("[bold yellow]do you want to run at maximum speed? AKA max_perf=True?\n[Y/N]")
-    
+
     max_perf = atb(console.input("[bold green]>> "))
-    
+
     task = {
         "command": command,
         "count": count,
         "max_perf": max_perf,
         "hold": hold,
         "chats": chats
-    } 
-    
+    }
+
     return task
 
 def click_dialog(command, console):
     console.print("[bold yellow]Type bot username to click the message in")
-    
+
     username = lnk(console.input("[bold green]>> "))
-    
+
     console.print("[bold yellow]Type the button index, starting from 0 which is the first button")
-    
+
     index = console.input("[bold green]>> ")
-    
+
     while not index.isdigit():
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         index = console.input("[bold green]>> ")
-     
+
     index = int(index)
-     
+
     console.print("[bold yellow]Do you want to enable force_find option?\n[bold green]force_find let the account check every last message from the bot,until it finds a keyboard, and click it")
-     
+
     force_find = console.input("[bold green][Y/N] ")
     force_find = True if force_find.lower()=="Y" else False
-     
+
     console.print("[bold yellow]Type a button name to find, instead of using index, type a button name to search for or empty string for default settings")
-     
+
     searchfor = console.input("[bold green]>> ")
-     
+
     searchfor = False if searchfor=="" else searchfor
-     
+
     console.print("[bold yellow]Type the number of accounts\n[bold red]max by default")
 
     count = console.input("[bold green]>> ")
@@ -206,21 +206,21 @@ def click_dialog(command, console):
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         count = console.input("[bold green]>> ")
     count = "max" if count == "" else int(count)
-    
+
     console.print("[bold yellow]Type the wait time between each account, in seconds\n[bold red]0 by default")
-    
+
     hold = console.input("[bold green]>> ")
-    
+
     while not hold.isdigit() and hold != "":
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         hold = console.input("[bold green]>> ")
-    
+
     hold = 0 if hold == "" else int(hold)
-    
+
     console.print("[bold yellow]do you want to run at maximum speed? AKA max_perf=True?\n[Y/N]")
-    
+
     max_perf = atb(console.input("[bold green]>> "))
-    
+
     task = {
         "command": command,
         "count": count,
@@ -230,13 +230,13 @@ def click_dialog(command, console):
         "index": index,
         "force_find": force_find,
         "searchfor": searchfor
-    } 
-    
+    }
+
     return task
 
 def ref_dialog(command, console):
     console.print("[bold yellow]Type your refferal link")
-    
+
     link = console.input("[bold green]>> ")
     while True:
         try:
@@ -244,9 +244,9 @@ def ref_dialog(command, console):
             break
         except:
             console.print("[bold red]Invalid Refferal Link :warning:\n[bold yellow]try again")
-            
+
             link = console.input("[bold green]>> ")
-    
+
     console.print("[bold yellow]Type the number of accounts\n[bold red]max by default")
 
     count = console.input("[bold green]>> ")
@@ -255,27 +255,27 @@ def ref_dialog(command, console):
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         count = console.input("[bold green]>> ")
     count = "max" if count == "" else int(count)
-    
+
     console.print("[bold yellow]Type the wait time between each account, in seconds\n[bold red]0 by default")
-    
+
     hold = console.input("[bold green]>> ")
-    
+
     while not hold.isdigit() and hold != "":
         console.print("[bold red]Wrong number, please type correct number or empty string for default settings")
         hold = console.input("[bold green]>> ")
-    
+
     hold = 0 if hold == "" else int(hold)
-    
+
     console.print("[bold yellow]do you want to run at maximum speed? AKA max_perf=True?\n[Y/N]")
-    
+
     max_perf = atb(console.input("[bold green]>> "))
-    
+
     task = {
         "command": command,
         "count": count,
         "max_perf": max_perf,
         "hold": hold,
         "ref_link": link
-    } 
-    
+    }
+
     return task

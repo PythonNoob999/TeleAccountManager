@@ -7,9 +7,9 @@ class Ref:
     async def ref(
         phone_number: str,
         session_string: str,
-        ref_link: str,
+        link: str,
     ):
-        data = process_ref_link(ref_link)
+        data = process_ref_link(link)
 
         app = Client(phone_number, session_string=session_string)
 

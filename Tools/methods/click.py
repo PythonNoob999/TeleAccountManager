@@ -4,13 +4,14 @@ InlineKeyboardMarkup as IKM,
 ReplyKeyboardMarkup as RKM
 )
 from ..info import logger
+from typing import Union
 import asyncio
 
 class Click:
     async def click(
         phone_number: str,
         session_string: str,
-        username: str,
+        username: Union[str,int],
         index: int,
         searchfor = None,
         force_find = False,
