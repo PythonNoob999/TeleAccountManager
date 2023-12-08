@@ -69,12 +69,12 @@ async def main_handler(bot, m):
         await m.reply("Refreshing📟")
         inf = await Refresh.refresh()
         text = f'''
-        Scan complete!
-        Results:
-          total accounts: {inf["total"]}
-          banned: {inf["banned"]}
-          revoked: {inf["revoked"]}
-          remaining accounts: {inf["remain"]}
+Scan complete!
+Results:
+  total accounts: {inf["total"]}
+  banned: {inf["banned"]}
+  revoked: {inf["revoked"]}
+  remaining accounts: {inf["remain"]}
         '''
         return await m.reply(text)
 
