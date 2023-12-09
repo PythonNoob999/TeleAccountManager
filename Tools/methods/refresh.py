@@ -16,12 +16,16 @@ class Refresh:
                 await app.disconnect()
             except errors.SessionRevoked:
                 revoked += 1
+                db.delete_account(account)
             except errors.AuthKeyUnregistered:
                 revoked +=1
+                db.delete_account(account)
             except errors.UserDeactivatedBan:
                 banned += 1
+                db.delete_account(account)
             except errors.UserDeactivated:
                 banned += 1
+                db.delete_account(account)
         return {
             "total": len(accounts),
             "banned": banned,
