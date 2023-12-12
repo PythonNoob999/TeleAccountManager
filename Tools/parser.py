@@ -62,8 +62,12 @@ def process_links(links):
     return result
 
 def process_post_link(link):
+    if "/c/" in link:
+        indexes = [1,2]
+    else:
+        indexes = [0,1]
     link = lnk(link).split("/")
-    return {"chat": soi(link[0]), "id": int(link[1])}
+    return {"chat": soi(link[indexes[0]]), "id": int(link[indexes[1]])}
 
 # Parsing the arguments
 def parse_kwargs(text: str,command: str) -> dict:
