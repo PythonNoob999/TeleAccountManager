@@ -55,13 +55,15 @@ def process_links(links):
             result.append(int(link))
         elif "+" in link:
             result.append(link)
+        elif link.isdigit():
+            result.append(int(link))
         else:
             result.append(lnk(link))
     return result
 
 def process_post_link(link):
     link = lnk(link).split("/")
-    return {"chat": link[0], "id": int(link[1])}
+    return {"chat": soi(link[0]), "id": int(link[1])}
 
 # Parsing the arguments
 def parse_kwargs(text: str,command: str) -> dict:
