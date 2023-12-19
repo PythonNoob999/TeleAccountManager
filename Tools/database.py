@@ -49,7 +49,7 @@ class DB:
         return accs
 
     def get_account_info(self,phone_number):
-        self.c.execute("SELECT session_string FROM accounts WHERE phone_number=(?)", [phone_number])
+        self.c.execute("SELECT session_string,password FROM accounts WHERE phone_number=(?)", [phone_number])
         data = self.c.fetchall()[0]
 
-        return {"session_string": data[0]}
+        return {"session_string": data[0], "password": data[1]}
