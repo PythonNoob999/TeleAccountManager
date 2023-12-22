@@ -196,7 +196,7 @@ def click_dialog(command, console):
 
     searchfor = console.input("[bold green]>> ")
 
-    searchfor = False if searchfor=="" else searchfor
+    searchfor = None if searchfor=="" else searchfor
 
     console.print("[bold yellow]Type the number of accounts\n[bold red]max by default")
 
