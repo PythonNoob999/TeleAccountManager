@@ -275,7 +275,7 @@ def ref_dialog(command, console):
         "count": count,
         "max_perf": max_perf,
         "hold": hold,
-        "ref_link": link
+        "link": link
     }
 
     return task
