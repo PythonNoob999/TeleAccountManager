@@ -12,7 +12,7 @@ class Refresh:
 
             try:
                 await app.connect()
-                await app.send_message("me", "Ping")
+                await app.get_me()
                 await app.disconnect()
             except errors.SessionRevoked:
                 revoked += 1
