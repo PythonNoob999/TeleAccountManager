@@ -33,7 +33,6 @@ KWARGS_TYPES = {
 
 
 def lnk(x):
-    if x.isdigit(): return int(x)
     try:
         return x.replace("https://t.me/","").replace("http://t.me/","").replace("https://telegram.me/","").replace("http://telegram.me/","").replace("@","")
     except:
