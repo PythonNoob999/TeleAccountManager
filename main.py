@@ -29,7 +29,7 @@ async def main_handler(bot, m):
         try:
             count = pc()
             result = await Execute(command, kwargs)
-            return await m.reply(f"Done {result['done']}/{result['total']}\nDone in {pc() - count} Seconds")
+            return await m.reply(f"Done {result['done']}/{result['total']}\nDone in {pc() - count} Seconds\n\n[devoloper]('https://t.me/kerolis55463')")
         except Exception as e:
             logger.error(e)
             return await m.reply("Invalid Arguments")
