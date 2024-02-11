@@ -10,13 +10,18 @@ class SendMessage:
         session_string: str,
         username: Union[str,int],
         message: str,
+        reply_to: int = None
     ):
         app = Client(phone_number, session_string=session_string)
 
         await app.connect()
 
         try:
-            await app.send_message(lnk(username), message)
+            if reply_to is not None:
+                msg = await app.get_messages(lnk(username), reply_to)
+                await msg.reply(message)
+            else:
+                await app.send_message(lnk(username), message)
             await app.disconnect()
             return 1
         except Exception as e:

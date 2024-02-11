@@ -23,6 +23,7 @@ KWARGS_TYPES = {
     "type": str,
     "hold": int,
     "index": int,
+    "reply_to": int,
     "username": soi,
     "force_find": stb,
     "max_perf": stb,
