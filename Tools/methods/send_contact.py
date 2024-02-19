@@ -55,7 +55,7 @@ class SendContact:
             await app.disconnect()
             return 0
 
-    def _get_last_message(
+    async def _get_last_message(
         self,
         app,
         username
