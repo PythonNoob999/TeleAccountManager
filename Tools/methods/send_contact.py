@@ -30,7 +30,7 @@ class SendContact:
         try:
             if reply_to is not None:
                 if reply_to == "last":
-                    message = await self._get_last_message(app, username)
+                    message = await SendContact._get_last_message(app, username)
                     id = message.id
                 else:
                     id = reply_to
@@ -56,7 +56,6 @@ class SendContact:
             return 0
 
     async def _get_last_message(
-        self,
         app,
         username
     ):
