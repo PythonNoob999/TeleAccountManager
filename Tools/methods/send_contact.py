@@ -10,7 +10,8 @@ class SendContact:
         username: Union[str,int],
         contact_number: str,
         first_name: str,
-        last_name = None
+        last_name = None,
+        reply_to = None,
     ):
 
         app = Client(phone_number, session_string=session_string)
@@ -27,10 +28,37 @@ class SendContact:
             last_name = app.me.last_name
 
         try:
-            await app.send_contact(username,phone_number=contact_number,first_name=first_name,last_name=last_name)
+            if reply_to is not None:
+                if reply_to == "last":
+                    message = await self._get_last_message(app, username)
+                    id = message.id
+                else:
+                    id = reply_to
+                await app.send_contact(
+                    username,
+                    phone_number=phone_number,
+                    first_name=first_name,
+                    last_name=last_name,
+                    reply_to_message_id=id
+                )
+            else:
+                await app.send_contact(
+                    username,
+                    phone_number=contact_number,
+                    first_name=first_name,
+                    last_name=last_name
+                )
             await app.disconnect()
             return 1
         except Exception as e:
             logger.exception(e)
             await app.disconnect()
             return 0
+
+    def _get_last_message(
+        self,
+        app,
+        username
+    ):
+        async for m in app.get_chat_history(username, limit=1):
+            return m
