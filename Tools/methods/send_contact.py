@@ -36,7 +36,7 @@ class SendContact:
                     id = reply_to
                 await app.send_contact(
                     username,
-                    phone_number=phone_number,
+                    phone_number=contact_number,
                     first_name=first_name,
                     last_name=last_name,
                     reply_to_message_id=id
