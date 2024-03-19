@@ -11,6 +11,7 @@ from .unsend_vote import UnsendVote
 from .export_chats import ExportChats
 from .captcha import Captcha
 from .watch import Watch
+from .get_code import GetCode
 
 class Methods(
 SendMessage,
@@ -25,6 +26,7 @@ SendVote,
 UnsendVote,
 ExportChats,
 Captcha,
-Watch
+Watch,
+GetCode
 ):
     pass

@@ -7,11 +7,11 @@ def isfloat(string):
 
 stb = (lambda x: True if x.lower() == "true" else False)
 soi = (lambda x: x if not isfloat(x) else int(x))
+sol = (lambda x: x.split("|") if "|" in x else x)
 
 KWARGS_TYPES = {
     "count": str,
     "link": str,
-    "message": str,
     "chats": str,
     "ref_link": str,
     "searchfor": str,
@@ -25,6 +25,7 @@ KWARGS_TYPES = {
     "index": int,
     "reply_to": soi,
     "username": soi,
+    "message": sol,
     "force_find": stb,
     "max_perf": stb,
     "button": stb,

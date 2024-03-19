@@ -3,6 +3,7 @@ from Tools.client import Execute, Run
 from Tools.parser import parse_kwargs
 from Tools.info import logger, db
 from Tools.methods.refresh import Refresh
+from Tools.methods.get_code import GetCode
 from time import perf_counter as pc
 
 client = Client(
@@ -77,5 +78,23 @@ Results:
   remaining accounts: {inf["remain"]}
         '''
         return await m.reply(text)
+
+    elif command == "get_code":
+        try:
+            account = txt[1]
+            if db.check_exist(account):
+                ss = db.get_account_info(account)["session_string"]
+                code  = await GetCode.get_code(account, ss)
+                if isinstance(code, str):
+                    return await m.reply(f"{account} code is {code}")
+                elif code is None:
+                    return await m.reply("did not recive the code yet!")
+                elif code is False:
+                    db.delete_account(account)
+                    return await m.reply(f"{acccount} Is Banned 📛")
+            return await m.reply("This phone number is not in the DB")
+        except Exception as e:
+            print(e)
+            return await m.reply("Please but a phone number")
 
 client.run()
