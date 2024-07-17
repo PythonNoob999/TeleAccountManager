@@ -19,3 +19,9 @@
 
 
 [Go to documentation](https://github.com/PythonNoob999/TeleAccountManager/blob/647d3d354aab418d075614912f1ca9ceb0a31fde/docs/)
+
+### TODO
+1. Better Command processor [ ]
+2. Better error logging (UI & log file) [ ]
+3. more documentation & built-in user docs [ ]
+4. prettier result log [ ]
