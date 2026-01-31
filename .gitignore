@@ -1,6 +1,0 @@
-*.sqlite3
-*.session
-*.session-journal
-*.json
-*.log
-__pycache__
